@@ -1,0 +1,11 @@
+/* ==========================================================================
+   NEXUM — Dashboard
+   Ajustes específicos desta página. A maior parte dos componentes visuais
+   (cards financeiros, lista de cobrança, alert banner) fica em cards.css
+   por serem reutilizáveis em outras páginas (Clientes, Empréstimos, Financeiro).
+   ========================================================================== */
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+}

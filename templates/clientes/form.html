@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% block title %}{{ "Editar Cliente" if modo == "editar" else "Novo Cliente" }} — NEXUM{% endblock %}
+{% block page_title %}{{ "Editar Cliente" if modo == "editar" else "Novo Cliente" }}{% endblock %}
+{% block avatar_initial %}F{% endblock %}
+
+{% block page_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/forms.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/clientes.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<form
+  class="form-card"
+  id="clienteForm"
+  data-modo="{{ modo }}"
+  data-cliente-id="{{ cliente.id if cliente else '' }}"
+  novalidate
+>
+  <div class="form-error" id="clienteFormError" role="alert"></div>
+
+  <div class="form-card__section">
+    <h2 class="form-card__section-title">Dados pessoais</h2>
+    <div class="form-grid">
+      <div class="form-group form-group--full">
+        <label for="nome">Nome completo</label>
+        <input class="input-field" style="padding-left:var(--space-3)" type="text" id="nome" name="nome"
+               value="{{ cliente.nome if cliente else '' }}" required>
+      </div>
+
+      <div class="form-group">
+        <label for="cpf">CPF</label>
+        <input class="input-field" style="padding-left:var(--space-3)" type="text" id="cpf" name="cpf"
+               placeholder="000.000.000-00" value="{{ cliente.cpf if cliente else '' }}" required>
+      </div>
+
+      <div class="form-group">
+        <label for="data_nascimento">Data de nascimento</label>
+        <input class="input-field" style="padding-left:var(--space-3)" type="date" id="data_nascimento" name="data_nascimento"
+               value="{{ cliente.data_nascimento if cliente else '' }}">
+      </div>
+
+      <div class="form-group">
+        <label for="telefone">Telefone</label>
+        <input class="input-field" style="padding-left:var(--space-3)" type="text" id="telefone" name="telefone"
+               placeholder="(00) 00000-0000" value="{{ cliente.telefone if cliente else '' }}">
+      </div>
+
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input class="input-field" style="padding-left:var(--space-3)" type="email" id="email" name="email"
+               value="{{ cliente.email if cliente else '' }}">
+      </div>
+
+      <div class="form-group">
+        <label for="status">Status</label>
+        <select class="input-field" style="padding-left:var(--space-3)" id="status" name="status">
+          <option value="ativo" {{ "selected" if not cliente or cliente.status == "ativo" }}>Ativo</option>
+          <option value="inativo" {{ "selected" if cliente and cliente.status == "inativo" }}>Inativo</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-card__section">
+    <h2 class="form-card__section-title">Endereço</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="cep">CEP</label>
+        <input class="input-field" style="padding-left:var(--space-3)" type="text" id="cep" name="cep"
+               value="{{ cliente.endereco.cep if cliente and cliente.endereco else '' }}">
+      </div>
+
+      <div class="form-group">
+        <label for="numero">Número</label>
+        <input class="input-field" style="padding-left:var(--space-3)" type="text" id="numero" name="numero"
+               value="{{ cliente.endereco.numero if cliente and cliente.endereco else '' }}">
+      </div>
+
+      <div class="form-group form-group--full">
+        <label for="logradouro">Logradouro</label>
+        <input class="input-field" style="padding-left:var(--space-3)" type="text" id="logradouro" name="logradouro"
+               value="{{ cliente.endereco.logradouro if cliente and cliente.endereco else '' }}">
+      </div>
+
+      <div class="form-group">
+        <label for="complemento">Complemento</label>
+        <input class="input-field" style="padding-left:var(--space-3)" type="text" id="complemento" name="complemento"
+               value="{{ cliente.endereco.complemento if cliente and cliente.endereco else '' }}">
+      </div>
+
+      <div class="form-group">
+        <label for="bairro">Bairro</label>
+        <input class="input-field" style="padding-left:var(--space-3)" type="text" id="bairro" name="bairro"
+               value="{{ cliente.endereco.bairro if cliente and cliente.endereco else '' }}">
+      </div>
+
+      <div class="form-group">
+        <label for="cidade">Cidade</label>
+        <input class="input-field" style="padding-left:var(--space-3)" type="text" id="cidade" name="cidade"
+               value="{{ cliente.endereco.cidade if cliente and cliente.endereco else '' }}">
+      </div>
+
+      <div class="form-group">
+        <label for="estado">UF</label>
+        <input class="input-field" style="padding-left:var(--space-3)" type="text" id="estado" name="estado" maxlength="2"
+               value="{{ cliente.endereco.estado if cliente and cliente.endereco else '' }}">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-card__actions">
+    <a class="btn btn-secondary" href="{{ url_for('clientes.lista') }}">Cancelar</a>
+    <button class="btn btn-primary" type="submit" id="clienteFormSubmit">
+      <span class="btn-label">{{ "Salvar alterações" if modo == "editar" else "Cadastrar cliente" }}</span>
+      <span class="spinner"></span>
+    </button>
+  </div>
+</form>
+
+{% endblock %}
+
+{% block page_js %}
+<script src="{{ url_for('static', filename='css/js/clientes.js') }}"></script>
+{% endblock %}

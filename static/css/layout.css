@@ -1,0 +1,249 @@
+/* ==========================================================================
+   NEXUM — Layout
+   Estrutura base das páginas autenticadas: Sidebar + Header + Conteúdo + Footer.
+   Desktop-first: a sidebar é fixa por padrão; abaixo de 992px ela vira uma
+   gaveta (drawer) que desliza sobre o conteúdo, acionada pelo botão do header.
+   ========================================================================== */
+
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* --------------------------------------------------------------------------
+   Sidebar
+   -------------------------------------------------------------------------- */
+.sidebar {
+  width: var(--layout-sidebar-width);
+  flex-shrink: 0;
+  background: var(--color-surface);
+  border-right: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: var(--z-sidebar);
+  transition: transform var(--transition-base);
+}
+
+.sidebar__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.sidebar__logo {
+  width: 36px;
+  height: 36px;
+  background: var(--color-primary);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.sidebar__name {
+  font-size: var(--fs-md);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--color-text);
+}
+
+.sidebar__nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-4) var(--space-3);
+  overflow-y: auto;
+}
+
+.sidebar__footer {
+  padding: var(--space-3);
+  border-top: 1px solid var(--color-border);
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-3);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.nav-link svg {
+  width: 19px;
+  height: 19px;
+  flex-shrink: 0;
+}
+
+.nav-link:hover {
+  background: var(--color-surface-alt);
+  color: var(--color-text);
+}
+
+.nav-link.is-active {
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+}
+
+/* Overlay usado apenas quando a sidebar vira gaveta (mobile/tablet) */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: var(--z-overlay);
+}
+
+/* --------------------------------------------------------------------------
+   Área principal (header + conteúdo + footer)
+   -------------------------------------------------------------------------- */
+.app-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-left: var(--layout-sidebar-width);
+  min-width: 0;
+}
+
+.topbar {
+  height: var(--layout-header-height);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: 0 var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.topbar__menu-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted);
+  padding: var(--space-2);
+  border-radius: var(--radius-sm);
+}
+
+.topbar__menu-btn:hover {
+  background: var(--color-surface-alt);
+  color: var(--color-text);
+}
+
+.topbar__menu-btn svg {
+  width: 22px;
+  height: 22px;
+}
+
+.topbar__title {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  flex: 1;
+}
+
+.topbar__user {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.topbar__greeting {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.topbar__greeting strong {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-full);
+  background: var(--color-primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: var(--fs-sm);
+  flex-shrink: 0;
+}
+
+.content {
+  flex: 1;
+  width: 100%;
+  max-width: var(--layout-content-max-width);
+  margin: 0 auto;
+  padding: var(--space-6);
+}
+
+.app-footer {
+  padding: var(--space-4) var(--space-6);
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+  font-size: var(--fs-xs);
+  color: var(--color-text-subtle);
+}
+
+/* --------------------------------------------------------------------------
+   Breakpoint — Tablet / Mobile
+   A sidebar sai do fluxo, vira gaveta fechada por padrão (translateX -100%).
+   -------------------------------------------------------------------------- */
+@media (max-width: 992px) {
+  .sidebar {
+    transform: translateX(-100%);
+    box-shadow: var(--shadow-card);
+  }
+
+  .app-shell.sidebar-open .sidebar {
+    transform: translateX(0);
+  }
+
+  .app-shell.sidebar-open .sidebar-overlay {
+    display: block;
+  }
+
+  .app-main {
+    margin-left: 0;
+  }
+
+  .topbar__menu-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .topbar {
+    padding: 0 var(--space-4);
+  }
+
+  .content {
+    padding: var(--space-4);
+  }
+}
+
+@media (max-width: 560px) {
+  .topbar__greeting {
+    display: none;
+  }
+}

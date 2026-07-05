@@ -1,0 +1,122 @@
+/* ==========================================================================
+   NEXUM — Login
+   Layout específico da tela de autenticação.
+   Mobile-first: base pensada para celular, com breakpoint para desktop.
+   ========================================================================== */
+
+.login-page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-5);
+  background:
+    radial-gradient(circle at 15% 15%, rgba(124, 58, 237, 0.16), transparent 45%),
+    radial-gradient(circle at 85% 85%, rgba(124, 58, 237, 0.10), transparent 40%),
+    var(--color-bg);
+}
+
+.login-wrap {
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+/* Marca */
+.login-brand {
+  text-align: center;
+}
+
+.login-brand__mark {
+  width: 64px;
+  height: 64px;
+  background: var(--color-primary);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-4);
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  color: #fff;
+  box-shadow: 0 12px 30px -8px rgba(124, 58, 237, 0.55);
+}
+
+.login-brand__name {
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--color-text);
+}
+
+.login-brand__tagline {
+  font-size: var(--fs-xs);
+  letter-spacing: 0.04em;
+  color: var(--color-text-subtle);
+  margin-top: var(--space-2);
+}
+
+/* Card */
+.login-card {
+  width: 100%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6) var(--space-5);
+  box-shadow: var(--shadow-card);
+}
+
+.login-card__title {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  margin-bottom: var(--space-5);
+}
+
+.login-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--space-2);
+}
+
+.login-remember {
+  margin-bottom: var(--space-5);
+}
+
+.login-submit {
+  margin-bottom: var(--space-5);
+}
+
+.login-forgot {
+  text-align: center;
+}
+
+.login-hint {
+  font-size: var(--fs-xs);
+  color: var(--color-text-subtle);
+  text-align: center;
+}
+
+/* ==========================================================================
+   Breakpoint — Tablet / Desktop
+   Acima de 768px o card ganha mais espaço e a página respira mais.
+   ========================================================================== */
+@media (min-width: 768px) {
+  .login-wrap {
+    max-width: 420px;
+    gap: var(--space-8);
+  }
+
+  .login-brand__mark {
+    width: 72px;
+    height: 72px;
+  }
+
+  .login-card {
+    padding: var(--space-8) var(--space-6);
+  }
+}

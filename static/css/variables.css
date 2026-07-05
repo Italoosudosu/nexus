@@ -1,0 +1,56 @@
+/* ==========================================================================
+   NEXUM — Design Tokens
+   Fonte única de verdade para cores, tipografia, espaçamento e raios.
+   Nenhum outro arquivo CSS deve declarar cores "soltas" — sempre referenciar
+   estas variáveis, para permitir temas futuros (ex.: modo claro) sem reescrita.
+   ========================================================================== */
+
+:root {
+  /* Cores — Base */
+  --color-bg: #0b0b12;
+  --color-surface: #13131f;
+  --color-surface-alt: #181826;
+  --color-border: #2a2a3e;
+
+  /* Cores — Texto */
+  --color-text: #f0eeff;
+  --color-text-muted: #8b8ba7;
+  --color-text-subtle: #6b6b8a;
+
+  /* Cores — Marca */
+  --color-primary: #7c3aed;
+  --color-primary-hover: #6d28d9;
+  --color-primary-soft: rgba(124, 58, 237, 0.12);
+
+  /* Cores — Feedback */
+  --color-danger: #ef4444;
+  --color-success: #22c55e;
+
+  /* Tipografia */
+  --font-base: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --fs-xs: 0.6875rem;   /* 11px */
+  --fs-sm: 0.8125rem;   /* 13px */
+  --fs-md: 0.9375rem;   /* 15px */
+  --fs-lg: 1.25rem;     /* 20px */
+  --fs-xl: 1.75rem;     /* 28px */
+
+  /* Espaçamento (escala base 4px) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-8: 3rem;
+
+  /* Raio e sombra */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 999px;
+  --shadow-card: 0 20px 60px -20px rgba(0, 0, 0, 0.6);
+
+  /* Transições */
+  --transition-fast: 150ms ease;
+  --transition-base: 220ms ease;
+}

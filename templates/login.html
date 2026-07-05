@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Entrar — NEXUM</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/variables.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/global.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/forms.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/buttons.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/login.css') }}"
+    />
+  </head>
+  <body>
+    <main class="login-page">
+      <div class="login-wrap">
+        <div class="login-brand">
+          <div class="login-brand__mark">N</div>
+          <div class="login-brand__name">NEXUM</div>
+          <div class="login-brand__tagline">
+            GESTÃO INTELIGENTE DE EMPRÉSTIMOS
+          </div>
+        </div>
+
+        <div class="login-card">
+          <h1 class="login-card__title">Entrar</h1>
+
+          <div class="form-error" id="loginError" role="alert"></div>
+
+          <form id="loginForm" novalidate>
+            <div class="form-group">
+              <label for="email">E-mail</label>
+              <div class="input-wrap">
+                <svg
+                  class="input-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                >
+                  <path
+                    d="M3 6.5c0-1.1.9-2 2-2h14c1.1 0 2 .9 2 2v11c0 1.1-.9 2-2 2H5c-1.1 0-2-.9-2-2v-11Z"
+                  />
+                  <path d="m3.5 6.5 8.5 6.5 8.5-6.5" />
+                </svg>
+                <input
+                  class="input-field"
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="seu@email.com"
+                  autocomplete="username"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="senha">Senha</label>
+              <div class="input-wrap">
+                <svg
+                  class="input-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                >
+                  <rect x="4" y="10.5" width="16" height="10" rx="2" />
+                  <path d="M8 10.5V7a4 4 0 0 1 8 0v3.5" />
+                </svg>
+                <input
+                  class="input-field"
+                  type="password"
+                  id="senha"
+                  name="senha"
+                  placeholder="••••••••"
+                  autocomplete="current-password"
+                  required
+                />
+                <button
+                  class="input-toggle"
+                  type="button"
+                  id="togglePassword"
+                  aria-label="Mostrar senha"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  >
+                    <path
+                      d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"
+                    />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <label class="checkbox-field login-remember">
+              <input type="checkbox" id="lembrar" name="lembrar" />
+              <span>Lembrar de mim</span>
+            </label>
+
+            <button
+              class="btn btn-primary login-submit"
+              type="submit"
+              id="loginSubmit"
+            >
+              <span class="btn-label">Entrar</span>
+              <span class="spinner"></span>
+            </button>
+
+            <div class="login-forgot">
+              {# TODO: substituir por url_for('auth.esqueci_senha') quando a
+              rota for criada #}
+              <a class="link-muted" href="#">Esqueci minha senha</a>
+            </div>
+          </form>
+        </div>
+
+        <div class="login-hint">
+          Acesso restrito a colaboradores autorizados
+        </div>
+      </div>
+    </main>
+
+    <script src="{{ url_for('static', filename='css/js/login.js') }}"></script>
+  </body>
+</html>

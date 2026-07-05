@@ -1,0 +1,225 @@
+/* ==========================================================================
+   NEXUM — Cards
+   Componentes reutilizáveis em qualquer página do sistema (não específicos
+   do Dashboard): banner de alerta, cards de indicador, lista de cobrança,
+   estado vazio.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Alert Banner
+   -------------------------------------------------------------------------- */
+.alert-banner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  background: var(--color-primary-soft);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  transition: background var(--transition-fast);
+}
+
+.alert-banner:hover {
+  background: rgba(124, 58, 237, 0.18);
+}
+
+.alert-banner__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-danger);
+  flex-shrink: 0;
+}
+
+.alert-banner__text {
+  flex: 1;
+  font-size: var(--fs-sm);
+  color: #c4b5fd;
+}
+
+.alert-banner__arrow {
+  color: var(--color-primary);
+  font-size: var(--fs-lg);
+  line-height: 1;
+}
+
+/* --------------------------------------------------------------------------
+   Cards financeiros (indicadores)
+   -------------------------------------------------------------------------- */
+.finance-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+.fin-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+
+.fin-card--accent {
+  background: var(--color-primary-soft);
+  border-color: rgba(124, 58, 237, 0.3);
+}
+
+.fin-card__label {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--color-text-subtle);
+  margin-bottom: var(--space-2);
+}
+
+.fin-card__value {
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1.2;
+}
+
+.fin-card__value--success {
+  color: var(--color-success);
+}
+
+.fin-card__value--danger {
+  color: var(--color-danger);
+}
+
+.fin-card__value--warning {
+  color: var(--color-warning);
+}
+
+.fin-card__sub {
+  font-size: var(--fs-xs);
+  color: var(--color-text-subtle);
+  margin-top: var(--space-1);
+}
+
+/* --------------------------------------------------------------------------
+   Divisor de seção
+   -------------------------------------------------------------------------- */
+.section-label {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+  margin-bottom: var(--space-3);
+}
+
+.dashboard-section {
+  margin-top: var(--space-6);
+}
+
+/* --------------------------------------------------------------------------
+   Lista de cobrança / itens (cards clicáveis, com indicador de status lateral)
+   -------------------------------------------------------------------------- */
+.collection-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.collection-card {
+  display: block;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3) var(--space-4);
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.collection-card:hover {
+  background: var(--color-surface-alt);
+}
+
+.collection-card--atraso {
+  border-left-color: var(--color-danger);
+}
+
+.collection-card--hoje {
+  border-left-color: var(--color-warning);
+}
+
+.collection-card--amanha {
+  border-left-color: var(--color-info);
+}
+
+.collection-card__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.collection-card__row + .collection-card__row {
+  margin-top: var(--space-1);
+}
+
+.collection-card__name {
+  font-weight: 600;
+  font-size: var(--fs-md);
+  color: var(--color-text);
+}
+
+.collection-card__value {
+  font-weight: 700;
+  font-size: var(--fs-md);
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+.collection-card__meta {
+  font-size: var(--fs-xs);
+  color: var(--color-text-subtle);
+}
+
+.collection-card__tag {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+}
+
+.collection-card__tag--atraso {
+  background: rgba(239, 68, 68, 0.15);
+  color: #fca5a5;
+}
+
+.collection-card__tag--hoje {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fcd34d;
+}
+
+.collection-card__tag--amanha {
+  background: rgba(56, 189, 248, 0.15);
+  color: #7dd3fc;
+}
+
+/* --------------------------------------------------------------------------
+   Estado vazio
+   -------------------------------------------------------------------------- */
+.empty-card {
+  background: var(--color-surface);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  text-align: center;
+}
+
+.empty-card__title {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  font-weight: 600;
+  margin-bottom: var(--space-1);
+}
+
+.empty-card__desc {
+  font-size: var(--fs-xs);
+  color: var(--color-text-subtle);
+}

@@ -1,0 +1,147 @@
+/* ==========================================================================
+   NEXUM — Forms
+   Estilos reutilizáveis para campos de formulário em todo o sistema.
+   ========================================================================== */
+
+.form-group {
+  margin-bottom: var(--space-4);
+}
+
+.form-group label {
+  display: block;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+  margin-bottom: var(--space-2);
+}
+
+.input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrap .input-icon {
+  position: absolute;
+  left: var(--space-3);
+  width: 18px;
+  height: 18px;
+  color: var(--color-text-subtle);
+  pointer-events: none;
+}
+
+.input-field {
+  width: 100%;
+  background: var(--color-surface-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3) var(--space-3) var(--space-3) 2.5rem;
+  color: var(--color-text);
+  font-size: var(--fs-md);
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.input-field::placeholder {
+  color: var(--color-text-subtle);
+}
+
+.input-field:hover {
+  border-color: #3a3a52;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  background: var(--color-surface);
+}
+
+/* Botão de mostrar/ocultar senha, dentro do próprio input */
+.input-toggle {
+  position: absolute;
+  right: var(--space-2);
+  background: transparent;
+  border: none;
+  padding: var(--space-2);
+  color: var(--color-text-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  transition: color var(--transition-fast);
+}
+
+.input-toggle:hover {
+  color: var(--color-text);
+}
+
+.input-toggle svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Checkbox customizado */
+.checkbox-field {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox-field input[type="checkbox"] {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 1px solid var(--color-border);
+  border-radius: 5px;
+  background: var(--color-surface-alt);
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.checkbox-field input[type="checkbox"]::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  transform: scale(0);
+  transition: transform var(--transition-fast);
+  background: var(--color-text);
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+.checkbox-field input[type="checkbox"]:checked {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.checkbox-field input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+.checkbox-field span {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+}
+
+/* Mensagem de erro do formulário */
+.form-error {
+  display: none;
+  align-items: center;
+  gap: var(--space-2);
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+  font-size: var(--fs-sm);
+  padding: var(--space-3);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-4);
+}
+
+.form-error.visible {
+  display: flex;
+}

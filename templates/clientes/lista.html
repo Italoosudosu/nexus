@@ -1,0 +1,119 @@
+{% extends "base.html" %} {% block title %}Clientes — NEXUM{% endblock %} {%
+block page_title %}Clientes{% endblock %} {% block avatar_initial %}F{% endblock
+%} {% block page_css %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/forms.css') }}"
+/>
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/tables.css') }}"
+/>
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/clientes.css') }}"
+/>
+{% endblock %} {% block content %}
+
+<div class="page-toolbar">
+  <div class="input-wrap page-toolbar__search">
+    <svg
+      class="input-icon"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.8"
+    >
+      <circle cx="11" cy="11" r="7" />
+      <path d="m20 20-3.5-3.5" />
+    </svg>
+    <input
+      class="input-field"
+      type="text"
+      id="buscaClientes"
+      placeholder="Buscar por nome ou CPF..."
+    />
+  </div>
+  <a
+    class="btn btn-primary"
+    style="width: auto"
+    href="{{ url_for('clientes.novo') }}"
+    >+ Novo Cliente</a
+  >
+</div>
+
+<div class="table-wrap">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>CPF</th>
+        <th>Telefone</th>
+        <th>Cidade/UF</th>
+        <th>Status</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody id="clientesTableBody">
+      {% for c in clientes %}
+      <tr data-id="{{ c.id }}">
+        <td>{{ c.nome }}</td>
+        <td class="is-muted">{{ c.cpf }}</td>
+        <td class="is-muted">{{ c.telefone or "—" }}</td>
+        <td class="is-muted">
+          {{ (c.endereco.cidade + "/" + c.endereco.estado) if c.endereco and
+          c.endereco.cidade else "—" }}
+        </td>
+        <td>
+          <span class="status-badge status-badge--{{ c.status }}">
+            {{ "Ativo" if c.status == "ativo" else "Inativo" }}
+          </span>
+        </td>
+        <td>
+          <div class="row-actions">
+            <a
+              class="row-action-btn"
+              href="{{ url_for('clientes.editar', cliente_id=c.id) }}"
+              aria-label="Editar"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+              >
+                <path d="M4 20h4l10-10-4-4L4 16v4Z" />
+              </svg>
+            </a>
+            <button
+              class="row-action-btn row-action-btn--danger"
+              data-action="excluir"
+              data-id="{{ c.id }}"
+              aria-label="Excluir"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+              >
+                <path
+                  d="M5 7h14M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2m-8 0 1 12a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1l1-12"
+                />
+              </svg>
+            </button>
+          </div>
+        </td>
+      </tr>
+      {% else %}
+      <tr class="data-table__empty">
+        <td colspan="6">Nenhum cliente cadastrado ainda.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %} {% block page_js %}
+<script src="{{ url_for('static', filename='css/js/clientes.js') }}"></script>
+{% endblock %}

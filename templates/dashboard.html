@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard — NEXUM</title>
+
+    <link rel="stylesheet" href="/static/css/variables.css" />
+    <link rel="stylesheet" href="/static/css/global.css" />
+    <link rel="stylesheet" href="/static/css/layout.css" />
+    <link rel="stylesheet" href="/static/css/buttons.css" />
+    <link rel="stylesheet" href="/static/css/cards.css" />
+
+    <link rel="stylesheet" href="css/dashboard.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar__brand">
+          <div class="sidebar__logo">N</div>
+          <span class="sidebar__name">NEXUM</span>
+        </div>
+
+        <nav class="sidebar__nav">
+          <a class="nav-link is-active" href="dashboard.html">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+            >
+              <path d="M3 10.5 12 3l9 7.5" />
+              <path d="M5 9.5V20a1 1 0 0 0 1 1h3v-6h6v6h3a1 1 0 0 0 1-1V9.5" />
+            </svg>
+            <span>Início</span>
+          </a>
+
+          <a class="nav-link" href="#">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+            >
+              <circle cx="9" cy="8" r="3.2" />
+              <path d="M3.5 20c0-3 2.5-5.2 5.5-5.2s5.5 2.2 5.5 5.2" />
+              <path d="M16 14.5c2.5.3 4.5 2.3 4.5 5.5" />
+              <circle cx="16.5" cy="7.5" r="2.3" />
+            </svg>
+            <span>Clientes</span>
+          </a>
+
+          <a class="nav-link" href="#">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+            >
+              <circle cx="12" cy="12" r="8.5" />
+              <path
+                d="M12 7.5v9M9.3 15c0 1.1 1.2 2 2.7 2s2.7-.7 2.7-1.8c0-2.4-5.4-1.2-5.4-3.6 0-1.1 1.2-1.8 2.7-1.8s2.7.7 2.7 1.8"
+              />
+            </svg>
+            <span>Empréstimos</span>
+          </a>
+
+          <a class="nav-link" href="#">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+            >
+              <path d="M4 20V10M11 20V4M18 20v-7" />
+            </svg>
+            <span>Financeiro</span>
+          </a>
+
+          <a class="nav-link" href="#">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+            >
+              <circle cx="12" cy="12" r="3" />
+              <path
+                d="M19.4 13.5a7.6 7.6 0 0 0 0-3l2-1.5-2-3.5-2.4.7a7.6 7.6 0 0 0-2.6-1.5L14 2h-4l-.4 2.2a7.6 7.6 0 0 0-2.6 1.5l-2.4-.7-2 3.5 2 1.5a7.6 7.6 0 0 0 0 3l-2 1.5 2 3.5 2.4-.7a7.6 7.6 0 0 0 2.6 1.5L10 22h4l.4-2.2a7.6 7.6 0 0 0 2.6-1.5l2.4.7 2-3.5-2-1.5Z"
+              />
+            </svg>
+            <span>Configurações</span>
+          </a>
+        </nav>
+
+        <div class="sidebar__footer">
+          <a class="nav-link" href="preview.html">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+            >
+              <path
+                d="M9 4H5.5A1.5 1.5 0 0 0 4 5.5v13A1.5 1.5 0 0 0 5.5 20H9"
+              />
+              <path d="M16 16.5 20.5 12 16 7.5" />
+              <path d="M20.5 12h-11" />
+            </svg>
+            <span>Sair</span>
+          </a>
+        </div>
+      </aside>
+
+      <div class="app-main">
+        <header class="topbar">
+          <button
+            class="topbar__menu-btn"
+            id="sidebarToggle"
+            aria-label="Abrir menu"
+            aria-expanded="false"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+            >
+              <path d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+          </button>
+
+          <h1 class="topbar__title">Dashboard</h1>
+
+          <div class="topbar__user">
+            <span class="topbar__greeting"
+              >Bom dia, <strong>Fernando</strong></span
+            >
+            <div class="avatar">F</div>
+          </div>
+        </header>
+
+        <main class="content">
+          <div class="dashboard">
+            <a class="alert-banner" href="#">
+              <span class="alert-banner__dot"></span>
+              <span class="alert-banner__text">
+                3 clientes em atraso · R$120,00 em multas
+              </span>
+              <span class="alert-banner__arrow">›</span>
+            </a>
+
+            <div class="finance-grid">
+              <div class="fin-card fin-card--accent">
+                <div class="fin-card__label">NA RUA</div>
+                <div class="fin-card__value">R$ 10k</div>
+                <div class="fin-card__sub">capital ativo</div>
+              </div>
+              <div class="fin-card">
+                <div class="fin-card__label">A RECEBER</div>
+                <div class="fin-card__value fin-card__value--success">
+                  R$ 14,6k
+                </div>
+                <div class="fin-card__sub">total esperado</div>
+              </div>
+              <div class="fin-card">
+                <div class="fin-card__label">EM ATRASO</div>
+                <div class="fin-card__value fin-card__value--danger">
+                  R$ 2.790,00
+                </div>
+                <div class="fin-card__sub">c/ multas</div>
+              </div>
+              <div class="fin-card">
+                <div class="fin-card__label">LUCRO MÊS</div>
+                <div class="fin-card__value fin-card__value--warning">
+                  R$ 4,6k
+                </div>
+                <div class="fin-card__sub">esperado</div>
+              </div>
+            </div>
+
+            <section class="dashboard-section">
+              <h2 class="section-label">Cobranças de hoje — 01/07/2026</h2>
+              <div class="collection-list">
+                <a class="collection-card collection-card--atraso" href="#">
+                  <div class="collection-card__row">
+                    <span class="collection-card__name">Zenilton</span>
+                    <span class="collection-card__value">R$ 910</span>
+                  </div>
+                  <div class="collection-card__row">
+                    <span class="collection-card__meta"
+                      >Venceu 27/06 · 3 dias atraso</span
+                    >
+                    <span
+                      class="collection-card__tag collection-card__tag--atraso"
+                      >+R$60,00 multa</span
+                    >
+                  </div>
+                </a>
+
+                <a class="collection-card collection-card--atraso" href="#">
+                  <div class="collection-card__row">
+                    <span class="collection-card__name"
+                      >Farley — Renegociação</span
+                    >
+                    <span class="collection-card__value">R$ 380</span>
+                  </div>
+                  <div class="collection-card__row">
+                    <span class="collection-card__meta"
+                      >Venceu 26/06 · 4 dias atraso</span
+                    >
+                    <span
+                      class="collection-card__tag collection-card__tag--atraso"
+                      >+R$80,00 multa</span
+                    >
+                  </div>
+                </a>
+
+                <a class="collection-card collection-card--atraso" href="#">
+                  <div class="collection-card__row">
+                    <span class="collection-card__name"
+                      >Farley — Semanal Quinta</span
+                    >
+                    <span class="collection-card__value">R$ 220</span>
+                  </div>
+                  <div class="collection-card__row">
+                    <span class="collection-card__meta"
+                      >Venceu 25/06 · 5 dias atraso</span
+                    >
+                    <span
+                      class="collection-card__tag collection-card__tag--atraso"
+                      >+R$100,00 multa</span
+                    >
+                  </div>
+                </a>
+
+                <a class="collection-card collection-card--hoje" href="#">
+                  <div class="collection-card__row">
+                    <span class="collection-card__name">Ademir — Domingo</span>
+                    <span class="collection-card__value">R$ 360</span>
+                  </div>
+                  <div class="collection-card__row">
+                    <span class="collection-card__meta">Vence hoje às 18h</span>
+                    <span
+                      class="collection-card__tag collection-card__tag--hoje"
+                      >vence hoje</span
+                    >
+                  </div>
+                </a>
+
+                <a class="collection-card collection-card--hoje" href="#">
+                  <div class="collection-card__row">
+                    <span class="collection-card__name">Zieliton — Play 4</span>
+                    <span class="collection-card__value">R$ 160</span>
+                  </div>
+                  <div class="collection-card__row">
+                    <span class="collection-card__meta"
+                      >Parcela pendente · vence hoje</span
+                    >
+                    <span
+                      class="collection-card__tag collection-card__tag--hoje"
+                      >vence hoje</span
+                    >
+                  </div>
+                </a>
+
+                <a class="collection-card collection-card--amanha" href="#">
+                  <div class="collection-card__row">
+                    <span class="collection-card__name">Lucas — Segunda</span>
+                    <span class="collection-card__value">R$ 660</span>
+                  </div>
+                  <div class="collection-card__row">
+                    <span class="collection-card__meta"
+                      >Vence amanhã 01/07</span
+                    >
+                    <span
+                      class="collection-card__tag collection-card__tag--amanha"
+                      >amanhã</span
+                    >
+                  </div>
+                </a>
+              </div>
+            </section>
+
+            <section class="dashboard-section">
+              <h2 class="section-label">Outros recebimentos</h2>
+              <div class="empty-card">
+                <p class="empty-card__title">Nenhum item pendente</p>
+                <p class="empty-card__desc">
+                  Mercadorias recebidas como pagamento aparecerão aqui
+                </p>
+              </div>
+            </section>
+          </div>
+        </main>
+
+        <footer class="app-footer">
+          <span>NEXUM © 2026 — Gestão Inteligente de Empréstimos</span>
+        </footer>
+      </div>
+    </div>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>
